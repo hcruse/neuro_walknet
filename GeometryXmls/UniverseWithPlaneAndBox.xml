@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RobotSim>
+   <Universe/>
+   <StaticBody Name="Ground">
+      <GeometricPrimitivesList>
+         <GeometricPrimitive Type="Plane">
+            <Color B="0" G="0" R="1"/>
+         </GeometricPrimitive>
+		 <GeometricPrimitive Type="Box">
+            <Color B="0" G="0" R="1"/>
+            <Dimension>
+               <Array3>
+                  <Value Index="0">1.0</Value>
+                  <Value Index="1">1.0</Value>
+                  <Value Index="2">0.15</Value>
+               </Array3>
+            </Dimension>
+             <OffsetPosition>
+               <Vector3>
+                  <Value Index="0">1.5</Value>
+                  <Value Index="1">-0.5</Value>
+                  <Value Index="2">0.05</Value>
+               </Vector3>
+            </OffsetPosition>
+         </GeometricPrimitive>
+      </GeometricPrimitivesList>
+   </StaticBody>
+</RobotSim>

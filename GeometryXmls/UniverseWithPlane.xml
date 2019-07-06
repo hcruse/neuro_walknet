@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RobotSim>
+   <Universe/>
+   <StaticBody Name="Ground">
+      <GeometricPrimitivesList>
+         <GeometricPrimitive Type="Plane">
+            <Color B="0" G="0" R="1"/>
+         </GeometricPrimitive>
+      </GeometricPrimitivesList>
+   </StaticBody>
+</RobotSim>

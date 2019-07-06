@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RobotSim>
+   <Universe/>
+   <StaticBody Name="Ground">
+      <GeometricPrimitivesList>
+         <GeometricPrimitive Type="Plane">
+            <Color B="0" G="0" R="1"/>
+         </GeometricPrimitive>
+         <GeometricPrimitive Type="Heightfield">
+            <XLength>20</XLength>
+            <YLength>10</YLength>
+            <ZData>
+               <Matrix>
+                  <Value Col="0" Row="0">0.19343</Value>
+                  <Value Col="1" Row="0">0.95079</Value>
+                  <Value Col="2" Row="0">0.89542</Value>
+                  <Value Col="3" Row="0">0.14391</Value>
+                  <Value Col="4" Row="0">0.094629</Value>
+                  <Value Col="5" Row="0">0.52303</Value>
+                  <Value Col="6" Row="0">0.5386</Value>
+                  <Value Col="7" Row="0">0.98828</Value>
+                  <Value Col="8" Row="0">0.74851</Value>
+                  <Value Col="9" Row="0">0.6228</Value>
+                  <Value Col="0" Row="1">0.6706</Value>
+                  <Value Col="1" Row="1">0.44229</Value>
+                  <Value Col="2" Row="1">0.51779</Value>
+                  <Value Col="3" Row="1">0.53863</Value>
+                  <Value Col="4" Row="1">0.28728</Value>
+                  <Value Col="5" Row="1">0.28915</Value>
+                  <Value Col="6" Row="1">0.88151</Value>
+                  <Value Col="7" Row="1">0.82621</Value>
+                  <Value Col="8" Row="1">0.48293</Value>
+                  <Value Col="9" Row="1">0.70811</Value>
+                  <Value Col="0" Row="2">0.26931</Value>
+                  <Value Col="1" Row="2">0.58734</Value>
+                  <Value Col="2" Row="2">0.45325</Value>
+                  <Value Col="3" Row="2">0.19793</Value>
+                  <Value Col="4" Row="2">0.59858</Value>
+                  <Value Col="5" Row="2">0.64699</Value>
+                  <Value Col="6" Row="2">0.58739</Value>
+                  <Value Col="7" Row="2">0.31851</Value>
+                  <Value Col="8" Row="2">0.26299</Value>
+                  <Value Col="9" Row="2">0.58012</Value>
+                  <Value Col="0" Row="3">0.27908</Value>
+                  <Value Col="1" Row="3">0.49494</Value>
+                  <Value Col="2" Row="3">0.56995</Value>
+                  <Value Col="3" Row="3">0.2161</Value>
+                  <Value Col="4" Row="3">0.15608</Value>
+                  <Value Col="5" Row="3">0.5402</Value>
+                  <Value Col="6" Row="3">0.65364</Value>
+                  <Value Col="7" Row="3">0.00022764</Value>
+                  <Value Col="8" Row="3">0.55489</Value>
+                  <Value Col="9" Row="3">0.083691</Value>
+                  <Value Col="0" Row="4">0.086511</Value>
+                  <Value Col="1" Row="4">0.46174</Value>
+                  <Value Col="2" Row="4">0.01937</Value>
+                  <Value Col="3" Row="4">0.22322</Value>
+                  <Value Col="4" Row="4">0.41131</Value>
+                  <Value Col="5" Row="4">0.30944</Value>
+                  <Value Col="6" Row="4">0.13043</Value>
+                  <Value Col="7" Row="4">0.30049</Value>
+                  <Value Col="8" Row="4">0.30698</Value>
+                  <Value Col="9" Row="4">0.45689</Value>
+                  <Value Col="0" Row="5">0.364</Value>
+                  <Value Col="1" Row="5">0.069556</Value>
+                  <Value Col="2" Row="5">0.39352</Value>
+                  <Value Col="3" Row="5">0.18061</Value>
+                  <Value Col="4" Row="5">0.30792</Value>
+                  <Value Col="5" Row="5">0.11687</Value>
+                  <Value Col="6" Row="5">0.23492</Value>
+                  <Value Col="7" Row="5">0.092325</Value>
+                  <Value Col="8" Row="5">0.42557</Value>
+                  <Value Col="9" Row="5">0.011178</Value>
+                  <Value Col="0" Row="6">0.20831</Value>
+                  <Value Col="1" Row="6">0.15244</Value>
+                  <Value Col="2" Row="6">0.13591</Value>
+                  <Value Col="3" Row="6">0.12873</Value>
+                  <Value Col="4" Row="6">0.27469</Value>
+                  <Value Col="5" Row="6">0.22686</Value>
+                  <Value Col="6" Row="6">0.017145</Value>
+                  <Value Col="7" Row="6">0.073095</Value>
+                  <Value Col="8" Row="6">0.29761</Value>
+                  <Value Col="9" Row="6">0.13814</Value>
+                  <Value Col="0" Row="7">0.16412</Value>
+                  <Value Col="1" Row="7">0.13736</Value>
+                  <Value Col="2" Row="7">0.0080849</Value>
+                  <Value Col="3" Row="7">0.13551</Value>
+                  <Value Col="4" Row="7">0.184</Value>
+                  <Value Col="5" Row="7">0.051923</Value>
+                  <Value Col="6" Row="7">0.16819</Value>
+                  <Value Col="7" Row="7">0.072401</Value>
+                  <Value Col="8" Row="7">0.079223</Value>
+                  <Value Col="9" Row="7">0.16253</Value>
+                  <Value Col="0" Row="8">0.089457</Value>
+                  <Value Col="1" Row="8">0.10358</Value>
+                  <Value Col="2" Row="8">0.082905</Value>
+                  <Value Col="3" Row="8">0.018543</Value>
+                  <Value Col="4" Row="8">0.032596</Value>
+                  <Value Col="5" Row="8">0.050714</Value>
+                  <Value Col="6" Row="8">0.066887</Value>
+                  <Value Col="7" Row="8">0.010661</Value>
+                  <Value Col="8" Row="8">0.060711</Value>
+                  <Value Col="9" Row="8">0.086819</Value>
+                  <Value Col="0" Row="9">0</Value>
+                  <Value Col="1" Row="9">0</Value>
+                  <Value Col="2" Row="9">0</Value>
+                  <Value Col="3" Row="9">0</Value>
+                  <Value Col="4" Row="9">0</Value>
+                  <Value Col="5" Row="9">0</Value>
+                  <Value Col="6" Row="9">0</Value>
+                  <Value Col="7" Row="9">0</Value>
+                  <Value Col="8" Row="9">0</Value>
+                  <Value Col="9" Row="9">0</Value>
+               </Matrix>
+            </ZData>
+            <OffsetPosition>
+               <Vector3>
+                  <Value Index="0">11</Value>
+                  <Value Index="1">0</Value>
+                  <Value Index="2">0</Value>
+               </Vector3>
+            </OffsetPosition>
+            <Color B="0" G="0" R="1"/>
+         </GeometricPrimitive>
+      </GeometricPrimitivesList>
+   </StaticBody>
+</RobotSim>

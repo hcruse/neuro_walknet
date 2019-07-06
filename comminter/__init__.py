@@ -1,0 +1,1 @@
+from comminter.CommunicationInterface import CommunicationInterface
