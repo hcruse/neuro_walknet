@@ -72,6 +72,14 @@ For further details on the specific settings for the video and the underlying ex
 
 --
 
+### Overview Controller
+
+![Overview of the controller (see Fig. 2 in the article) - added are the numbers as used in the python code.](FiguresController/ControllerNeurons.jpg)
+
+![SRP network with added neuron numbers](FiguresController/SRP_Neurons.jpg)
+
+--
+
 ### References
 
 * Schilling, M. and Cruse, H. (submitted): Decentralized Control of Insect Walking – a simple neural network explains a wide range of behavioral and neurophysiological results.
