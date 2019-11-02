@@ -16,6 +16,7 @@ The robot simulator implements a generic simulation environment and a communicat
 For more details on the robot Hector see [Schneider et al., 2014](https://link.springer.com/chapter/10.1007/978-3-319-09435-9_51).
 
 --
+
 ### Install and Setup
 
 This is the code base of the neuro_walknet controller which is sued to control the robot Hector. For running this code you require the Hector simulator.
@@ -42,7 +43,35 @@ The repository consists of multiple folders:
 * comminter - establishes a connection towards the simulator.
 * tools
 
+Currently, we are hosting supplemental videos showing the simulated robot walking in different experimental setups:
+
+#### Forward walking at different velocities:
+
+    * NeuralWN_vel15.mp4 – forward walking, velocity neuron set to 15 mV
+    * NeuralWN_vel20.mp4 – forward walking, velocity neuron set to 20 mV
+    * NeuralWN_vel25.mp4 – forward walking, velocity neuron set to 25 mV
+    * NeuralWN_vel30.mp4 – forward walking, velocity neuron set to 30 mV
+    * NeuralWN_vel35.mp4 – forward walking, velocity neuron set to 35 mV
+    * NeuralWN_vel40.mp4 – forward walking, velocity neuron set to 40 mV
+    * NeuralWN_vel45.mp4 – forward walking, velocity neuron set to 45 mV
+    * NeuralWN_vel50.mp4 – forward walking, velocity neuron set to 50 mV
+    * NeuralWN_run.mp4 – driven at high velocity includes CPG activation
+
+#### Curve Walking:
+
+    * NeuralWN_curve_walking.mp4
+
+#### Backward walking at different velocities:
+
+    * NeuralWN_bw20.mp4 – backward walking, velocity neuron set to 20 mV
+    * NeuralWN_bw30.mp4 – backward walking, velocity neuron set to 30 mV
+    * NeuralWN_bw40.mp4 – backward walking, velocity neuron set to 40 mV 
+    * NeuralWN_bw50.mp4 – backward walking, velocity neuron set to 20 mV
+
+For further details on the specific settings for the video and the underlying experimental paradigm see the submitted article Schilling and Cruse, Decentralized Control of Insect Walking – a simple neural network explains a wide range of behavioral and neurophysiological results.
+
 --
+
 ### References
 
 * Schilling, M. and Cruse, H. (submitted): Decentralized Control of Insect Walking – a simple neural network explains a wide range of behavioral and neurophysiological results.
