@@ -74,9 +74,8 @@ For further details on the specific settings for the video and the underlying ex
 
 ### Overview Controller
 
-![Overview of the controller (see Fig. 2 in the article) - added are the numbers as used in the python code.](FiguresController/ControllerNeurons.jpg)
-
-![SRP network with added neuron numbers](FiguresController/SRP_Neurons.jpg)
+Overview of the controller (see Fig. 2 in the article) - added are the numbers as used in the python code.
+![Overview of the neuroWalknet controller](FiguresController/ControllerNeurons.jpg)
 
 --
 
