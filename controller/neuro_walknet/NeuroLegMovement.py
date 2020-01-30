@@ -746,7 +746,7 @@ class NeuroLegMovement:
 
         ################
         ################
-        ## Application of Hodgkin Huxley Differential equation
+        ## Application of a simplified Hodgkin Huxley Differential equation
         ## Update the activations of the neurons
         ################
         for i in range(self.n):              # HH-Diff Equ.
