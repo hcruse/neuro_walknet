@@ -64,13 +64,12 @@ class NeuroLegMovement:
         self.alpha_e, self.beta_e, self.gamma_e = None, None, None
         self.alpha_vel, self.beta_vel, self.gamma_vel = None, None, None
 
-        self.n = 328 #NN   statt 327  L76    #######intraleg see Settings
-        self.pilo2 = 0.  ######piloneu  L77
+        self.n = 328 #######intraleg see Settings
+        self.pilo2 = 0.
 
-        self.Akay, self.HellHess = 0.,0.  #L86   ###### intraleg, no curve see L 280, rule5 off
         self.CS = 0.    ###### intraleg
         self.min = 0. #15. for ramp only
-        if self.HellHess == 1: self.min = 15.   # zu intraleg 5Aug L87
+        if WNParams.HellHess == 1: self.min = 15.   # zu intraleg 5Aug L87
         self.ChOpos, self.ChOvel = self.min,0.  ###### intraleg
         self.period, self.stim_duration = 0.,0.  ## intraleg
 
@@ -250,7 +249,7 @@ class NeuroLegMovement:
         self.WI[178][134] = 30. # inhibition of input during Stance, antiphase influence only during swing
         if WNParams.Deaffonly[self.leg.name] == 1.:self.WE[179][174] = 0. # rule 5c input off
         if WNParams.pilo[self.leg.name] == 1.: # leg treated with pilocarpine
-             self.WI[179][126] = 0. # rule 5c, inhibitory input during Swing, off 
+             self.WI[179][126] = 0. # rule 5c, inhibitory input during Swing, off
              self.WI[178][134] = 0. # inhibition of input during Stance, off
         # out:
         self.WE[172][22] = 1 # rule 5, output
@@ -268,7 +267,7 @@ class NeuroLegMovement:
         self.WI[308][134] = 30. # inhibition of input during Stance, antiphase influence only during swing
         if WNParams.Deaffonly[self.leg.name] == 1.:self.WE[309][304] = 0. # rule 5c input off
         if WNParams.pilo[self.leg.name] == 1.: # leg treated with pilocarpine
-             self.WI[309][126] = 0. # rule 5c, inhibitory input during Swing, off 
+             self.WI[309][126] = 0. # rule 5c, inhibitory input during Swing, off
              self.WI[308][134] = 0. # inhibition of input during Stance, off
         # out:
         self.WE[302][62] = 1.  # rule 5, output
@@ -287,8 +286,6 @@ class NeuroLegMovement:
         # instead, rule 5 P (Pearson) is activated, sensory input is not required
         # Rule 5 P weights inhibit levation of neighboring legs during levation of sender leg
         # Fig 2:  bright-yellow units, pink lines
-#TODO Malte remove comment if still working without run
-#        if self.Run > 0.5: # (and vel > 45)
          # weights for Rule 5 P (Pearson)
         self.WE[301][42] = 1.  # output from levator premotor neuron
         self.WE[312][310] = 1.  # input from ipsilateral legs
@@ -322,7 +319,6 @@ class NeuroLegMovement:
         self.WE[324][42],self.WE[325][62] = 1.,1. # input from levator, depressor
         self.WI[324][326],self.WI[325][326] = 10.,10.
         self.WI[326][321],self.WE[326][121] = 10., 1. # disinhibition through Run[321]
-#END
 
         # Intact walking legs and deafferented legs, Standing legs in walking insect
         if WNParams.standL[self.leg.name] == 1.: self.WE[172][22] = 2. # leg standing on force transducer
@@ -589,7 +585,7 @@ class NeuroLegMovement:
              self.v[321] = 50. # Run
 
         # Experimental Settings:
-        # Testing starting or interruption of walks, tested, but not shown in article
+        # Testing starting or interruption of walks, tested, but not shown in articles
         #   if self.count < 1000: self.vel = 0. # start walk
         #   if self.count > 5000: self.vel = 0. # stop walk
         # SplitBelt (simple curve walking = left and right side walk at different speeds)
@@ -620,7 +616,7 @@ class NeuroLegMovement:
               self.WE[172][22] = 1.
               if self.v[8] > 25. and self.v[123] > self.v[122]: #  # front position range during Stance
                   self.WE[172][22] = 15. # 40. #high load to overcome threshold of 20. strong load due to friction
-        if WNParams.standL[self.leg.name] == 1.: self.WE[172][22] = 2. 
+        if WNParams.standL[self.leg.name] == 1.: self.WE[172][22] = 2.
 
         if self.Run > 0.5:  # activation of depressor premotor neuron to reach sensible starting configuration
             # for all legs, during about the first 500 ms
@@ -645,10 +641,10 @@ class NeuroLegMovement:
             if self.v[125] > self.v[124]: self.Iapp[8] = 35. # BW
         self.Iapp[48] = (-self.orientation_factor * self.hind_leg_fact * self.beta - self.PI/6.)*50./(self.PI/3.) # includes (+30°) psi shift
         self.Iapp[88] = (-self.orientation_factor * self.hind_leg_fact * self.gamma*0.5 + 0.5)*50. #
-   #     if WNParams.intraleg[self.leg.name] == 1.:   # corr: 2 Aug ,err nach  July 8, L 664
-        if self.HellHess == 1:    # new 5 Aug L669
-            self.Iapp[88] = self.ChOpos   ###### L665   intraleg Hess
-     #   self.xy = self.Iapp[88]    #######
+
+        # Hellekes and Hess experimental condition
+        if WNParams.HellHess == 1:
+            self.Iapp[88] = self.ChOpos   #
 
         # Definition of leg position for "Standing legs in walking insect"
         if WNParams.standL[self.leg.name]  == 1:
@@ -765,7 +761,7 @@ class NeuroLegMovement:
 
         countstart =  0 #
         if WNParams.pilo[self.leg.name] == 1.:
-                  countstart = 10  # CPG, pilo on 
+                  countstart = 10  # CPG, pilo on
 
         #  CPGs on if Stance  >  Swing and after 10 ms. For "All legs deafferented" and "Intact walking legs and deafferented legs"
         if (self.v[123]) > (self.v[122]) and (self.count >= countstart):
@@ -777,7 +773,6 @@ class NeuroLegMovement:
                      self.Iapp[64] =  3. #6. #30. #25. #neu # klass  # pilocarpine depressor
                      self.Iapp[82] =  5.#  20. #30. #50. #neu # klass  # pilocarpine flexor
                      self.Iapp[102] = 5. #30. #50. #neu # klass # pilocarpine extensor
-             #        self.v[123] = 50.  # Stance on   L781  cut, no difference
 
         #### piecewise linear synapses
         self.g =  ( self.v - self.Erest)             # sum of excitatory synaptic input
@@ -832,7 +827,7 @@ class NeuroLegMovement:
             if i == 166:  # for coordin rule 2c
                 self.vn[i] = self.vn[i] =  self.applyBandPassFilter(i, 0.005, 0.1)
             if i == 149:  # for coordin rule 3i
-                self.vn[i] = self.vn[i] =  self.applyBandPassFilter(i, 0.0001, 0.1) 
+                self.vn[i] = self.vn[i] =  self.applyBandPassFilter(i, 0.0001, 0.1)
          # end of nl HPF #
 
         for i in range(self.n):    # self.v[i] is required as input for the next iteration
@@ -854,7 +849,7 @@ class NeuroLegMovement:
 
 
         ################
-        # Pilocarpine application 
+        # Pilocarpine application
         if WNParams.pilo[self.leg.name]  == 1 and not WNParams.intraleg[self.leg.name] == 1: # new version: the latter is now possible (intraleg input)   leg deafferented  L859   #######intraleg  Y3
             self.v[4], self.v[24] = 0., 0.  # = 0.   # inhibits sensory influences via ring net
             self.v[45], self.v[65] = 0., 0.
@@ -903,9 +898,16 @@ class NeuroLegMovement:
                             if self.countdisturbtime > self.disturbduration: self.disturbstart = 1 # end of disturbance
         # End of applying disturbance
 
-        # Experiment: L 910  ########intraleg  Y4
+        ###########################
+        ###########################
+        # Novel intraleg studies
+        ###########################
+        ###########################
+        # Experiment:
         ###################
-        #  setting nur FR    # Stimulus  CS / ChO  20.4.21   leg fixed, therefore no movement from this leg
+        # setting only FR
+        # Stimulus: CampSens / ChordOrgan
+        # leg fixed, therefore no movement from this leg
         if WNParams.intraleg[self.leg.name] == 1.:  # L 920
             self.v[1],self.v[21],self.v[41],self.v[61],self.v[81],self.v[101] = 0.,0.,0.,0.,0.,0. # output FR = 0
 
@@ -917,7 +919,7 @@ class NeuroLegMovement:
 
         ################
         # for "Standing legs in walking insect": legs walking on treadmill
-        if (WNParams.frictW[self.leg.name]) == 1.:   # strong activation of premotor unit, due to friction, should not provid velocities above a given threshold    
+        if (WNParams.frictW[self.leg.name]) == 1.:   # strong activation of premotor unit, due to friction, should not provid velocities above a given threshold
              if self.v[22] > 0.2*self.vel: self.v[21] = 0.2*self.vel
 
         ################
@@ -945,7 +947,7 @@ class NeuroLegMovement:
         self.betaHvelout += -self.orientation_factor * self.hind_leg_fact * (outLev - outDep) * self.fovel*WNParams.SwingBetaFactor[self.leg.name] # beta joint
         self.gammaHvelout += -self.orientation_factor * self.hind_leg_fact * (outFle - outExt) * self.fovel # gamma joint,
 
-        # pilocarpine: legs are deafferented, therefore: motor output off
+        # Novel pilocarpine experiment : legs are deafferented, therefore motor output off
         if WNParams.pilo[self.leg.name]  == 1:
              self.alphaHvelout = 0. # CPG
              self.betaHvelout = 0. # CPG
@@ -963,7 +965,7 @@ class NeuroLegMovement:
            # for "Standing legs in walking insect" retractor output shown only if above threshold,
            #  thr = 7. For Graphics to show strong output only.
            #  SaxA: 5.8 - 19.2, SaxB: 5.8 - 7.28, SaxC: 6.0 - 8.8, 19.5
-             if self.v[22] < 7: self.v[21] = 0. 
+             if self.v[22] < 7: self.v[21] = 0.
 
 
         # End of stance, End of Swing:  sens. feedback, PEP: here alpha position instead of load
@@ -1003,7 +1005,7 @@ class NeuroLegMovement:
                     self.Iapp[171] = 50. #    # 171 activates Swing, inhibits stance
 
                 # Adjustment for curve walking: inner front leg position threshold:
-                if WNParams.curve_walking and self.leg.name == "front_right_leg": 
+                if WNParams.curve_walking and self.leg.name == "front_right_leg":
                     if (self.Iapp[8] < WNParams.pep[self.leg.name]) or (self.v[88] > 40.):
                         self.Iapp[171] = 50.   # 171 activates Swing, inhibits stance
 
@@ -1028,7 +1030,6 @@ class NeuroLegMovement:
                 self.alphaHvelout = 0. # CPG
                 self.betaHvelout = 0. # CPG
                 self.gammaHvelout = 0. # CPG
-            #######intraleg   # stimuli CS femur bend, ChO  L 1042  FW    L1035 - L 1062
 
             #### to Fig 2 - 5: period 6000, stance: 4000, sw 2000
 
@@ -1068,11 +1069,11 @@ class NeuroLegMovement:
                      self.stim_duration = 1800.        ## 1800      Figs 6,7
                      self.mod1 = self.countStim%3600   ## period    Figs 6,7
                  if self.mod1 > 0 and self.mod1 < self.stim_duration:  # stimulus on
-                         if self.Akay == 1:   # CS
+                         if WNParams.Akay == 1:   # CS
                              self.CS = 50.
                              self.Iapp[170] = self.CS  # load on    ######  Iapp
                              self.Iapp[171] = 0. #  SW
-                         if self.HellHess == 1:  # ChO
+                         if WNParams.HellHess == 1:  # ChO
                            #  self.ChOpos = self.mod1 *20./4000. + self.min # startpos 15 - 35 mV
                              self.ChOpos = 20. * (self.mod1/self.stim_duration) + self.min #
                              self.Iapp[88] = self.ChOpos
@@ -1088,23 +1089,18 @@ class NeuroLegMovement:
                              # amplitude used here larger than normal step
 
                  if self.mod1 >= self.stim_duration:  #  # stimulus off
-                     if self.Akay == 1:
+                     if WNParams.Akay == 1:
                           self.CS = 0.
                           self.Iapp[170] = self.CS # ST
                           self.Iapp[171] = 50.  # load off, + load on to 126    test unterschied mit/ohne   L1062
-                     if self.HellHess == 1:
+                     if WNParams.HellHess == 1:
                           self.Iapp[170] = 0. # ST
                           self.Iapp[171] = 50.
                           self.ChOvel = 0.
                         #  self.ChOpos = (self.mod1 - 3.*self.mod1) *20./4000.+ 60. + self.min
                           self.ChOpos = 20. - 20. *((self.mod1 - self.stim_duration)/(self.period - self.stim_duration)) + self.min #
 
-
-        ###############
-        # velocity output 22.10.19  # L 985
-
-
-         # Velocities is calculated after first iteration - otherwise 0
+        # Velocities is calculated after first iteration - otherwise 0
         if (self.alpha_vel != None):                                       ###
             self.alpha_vel = self.alpha - self.alpha_old                   ###
             self.beta_vel = self.beta - self.beta_old                      ###
@@ -1160,11 +1156,11 @@ class NeuroLegMovement:
                  #self.mod1 = self.countStim%10800 #  Figs 3, 7
                  if self.mod1 > 0 and self.mod1 < 4000:  # stimulus on  Fig 2,4,5,6
                  #if self.mod1 > 0 and self.mod1 < 5800:  Figs 3, 7
-                     if self.Akay == 1:   # CS
+                     if WNParams.Akay == 1:   # CS
                          self.CS = 50.
                          self.Iapp[170] = self.CS  # load on    ######  Iapp
                          self.Iapp[171] = 0. #  SW
-                     if self.HellHess == 1:  # ChO
+                     if WNParams.HellHess == 1:  # ChO
                              self.ChOpos = self.mod1 *20./4000. + self.min # startpos 15 - 35 mV
                              self.Iapp[88] = self.ChOpos
                              # output 42 62 HessBü LevDepr beta, not dependent on walking, also Stand
@@ -1181,11 +1177,11 @@ class NeuroLegMovement:
 
                  if self.mod1 >= 4000:  #  # stimulus off Fig 2,4,5,6
                  #if self.mod1 >= 5800:  # Figs 3, 7
-                     if self.Akay == 1:
+                     if WNParams.Akay == 1:
                          self.CS = 0.
                          self.Iapp[170] = self.CS # ST
                          self.Iapp[171] = 50.  # load off, + load on to 126    test unterschied mit/ohne   L1062
-                     if self.HellHess == 1:
+                     if WNParams.HellHess == 1:
                          self.Iapp[170] = 0. # ST
                          self.Iapp[171] = 50.
                          self.ChOvel = 0.
